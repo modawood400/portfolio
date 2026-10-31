@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Security: only this site's own scripts run (the inline one is pinned by its hash; update the hash
+       if that script changes), fonts come from Google Fonts, and links never leak the page address. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-PzSacTQgz8P5jK7bteqwwDbhZ7lNL5UtR6c/D5TtEAE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Mohamed Dawood</title>
+  <meta name="description" content="Mohamed Dawood | محمد داود — Senior Visual Artist. Always Learning, Always Building.">
+  <meta name="theme-color" content="#E9ECEF">
+  <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Mohamed Dawood | محمد داود — Senior Visual Artist">
+  <meta property="og:description" content="Always Learning, Always Building.">
+  <meta property="og:type" content="website">
+
+  <!-- Apply saved language before first paint to avoid a layout flash -->
+  <script>
+    (function () {
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        var l = q || localStorage.getItem('md-lang');
+        if (l === 'ar') { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; }
+        // Ask for a language once per visit (skipped when the link already sets ?lang=)
+        if (!q && !sessionStorage.getItem('md-lang-picked')) document.documentElement.classList.add('gate');
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+      // A reload always starts from the top of the page
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      // The desktop page is laid out for a 1920-wide window and scaled by width (--hs). Below 1920 the
+      // scale eases off (power 0.6), so laptops get a larger page than a straight shrink would give
+      var hs = function () {
+        var s = innerWidth / 1920;
+        document.documentElement.style.setProperty('--hs', (s < 1 ? Math.pow(s, 0.6) : s).toFixed(4));
+      };
+      hs();
+      addEventListener('resize', hs);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Bricolage Grotesque for Latin; Thmanyah Sans (Arabic) is self-hosted in /fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=161">
+</head>
+<body>
+  <!-- Language picker shown before the site opens (once per visit) -->
+  <div class="lang-gate" id="lang-gate" role="dialog" aria-modal="true" aria-labelledby="lang-gate-title">
+    <div class="lang-gate__card">
+      <span class="lang-gate__mark"><svg viewBox="0 0 79 147" aria-hidden="true"><path fill="currentColor" d="M0 0h23l16.5 47.5L56 0h23v73H64V23L46 73H33L15 23v50H0zM0 86h55v12H15v18c0 7 11 11.5 24.5 11.5S64 123 64 116V73h15v41c0 19-18 33-39.5 33S0 133 0 114z"/></svg></span>
+      <h2 class="lang-gate__title" id="lang-gate-title"><span lang="en">Choose your language</span><span lang="ar" dir="rtl">اختر اللغة</span></h2>
+      <div class="lang-gate__options">
+        <button class="lang-gate__btn" type="button" data-lang="en" lang="en">English</button>
+        <button class="lang-gate__btn" type="button" data-lang="ar" lang="ar">العربية</button>
+      </div>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+
+  <!-- ============ Navigation ============ -->
+  <header class="nav" id="top">
+    <div class="nav__bar">
+      <a class="nav__brand" href="#top" aria-label="Mohamed Dawood — home">
+        <span class="nav__mark" aria-hidden="true"><svg class="md-mark" viewBox="0 0 79 147" aria-hidden="true"><path fill="currentColor" d="M0 0h23l16.5 47.5L56 0h23v73H64V23L46 73H33L15 23v50H0zM0 86h55v12H15v18c0 7 11 11.5 24.5 11.5S64 123 64 116V73h15v41c0 19-18 33-39.5 33S0 133 0 114z"/></svg></span>
+      </a>
+
+      <nav class="nav__links" id="nav-links" aria-label="Primary" data-i18n-aria="nav.aria">
+        <ul>
+          <li><a href="#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="lang-switch" type="button" id="lang-switch" dir="ltr" aria-label="التبديل إلى العربية">
+          <span class="lang-switch__opt" data-lang="en" lang="en" aria-hidden="true">EN</span>
+          <span class="lang-switch__opt" data-lang="ar" lang="ar" aria-hidden="true">ع</span>
+          <span class="lang-switch__thumb" aria-hidden="true"></span>
+        </button>
+        <button class="nav__menu" type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="nav__menu-label" data-i18n="nav.menu">Menu</span>
+          <span class="nav__menu-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="hero" aria-labelledby="hero-name">
+      <!-- Two crossing liquid-glass ribbons behind the portrait; words come from HERO_RIBBON in content.js -->
+      <div class="hero__ribbons" aria-hidden="true">
+        <div class="ribbon ribbon--a" dir="ltr"><div class="ribbon__track"></div></div>
+        <div class="ribbon ribbon--b" dir="ltr"><div class="ribbon__track ribbon__track--reverse"></div></div>
+        <div class="ribbon ribbon--c" dir="ltr"><div class="ribbon__track"></div></div>
+      </div>
+
+      <!-- One language at a time; text on the start side, cut-out portrait on the end side -->
+      <!-- Moving glass band along the portrait's bottom edge; service names from SERVICES in content.js -->
+      <div class="hero__band" dir="ltr" aria-hidden="true">
+        <div class="tl__heads"><span>V1</span><span>A1</span></div>
+        <div class="hero__band-track"></div>
+        <span class="tl__playhead"></span>
+      </div>
+
+      <div class="hero__stage container">
+        <div class="hero__text">
+          <h1 class="hero__name" id="hero-name">
+            <span class="hero__line" data-i18n="hero.first">Mohamed</span>
+            <span class="hero__line" data-i18n="hero.last">Dawood</span>
+          </h1>
+          <p class="hero__role" data-i18n="hero.title">Senior Visual Artist</p>
+
+
+          <!-- Booking link: set BOOKING_URL in content.js; falls back to the contact section -->
+          <div class="hero__ctas">
+            <a class="hero__cta" id="hero-cta" href="#contact">
+              <span class="hero__cta-icon" aria-hidden="true"><img src="assets/logos/googlemeet.svg" alt="" width="16" height="16"></span>
+              <span data-i18n="hero.ctaMeeting">Book a Free Meeting</span>
+            </a>
+            <!-- Quick contact: same links as CONTACT in content.js -->
+            <a class="hero__quick hero__quick--wa" href="https://wa.me/201018053810" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg>
+            </a>
+            <a class="hero__quick" href="mailto:modawooddesign@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>
+            </a>
+          </div>
+
+          <p class="hero__tagline" data-i18n="hero.taglinePlain">Always Learning, Always Building.</p>
+          <div class="hero__links">
+            <a class="hero__link hero__link--primary" href="#work"><span data-i18n="hero.ctaWork">View selected work</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10m0 0-4-4m4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="hero__link" href="#contact" data-i18n="hero.ctaContact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+
+      <figure class="hero__photo">
+        <img src="assets/portrait-cutout.webp" srcset="assets/portrait-cutout-640.webp 640w, assets/portrait-cutout.webp 993w" sizes="(min-width: 900px) 50vw, 100vw"
+             width="993" height="930" alt="Portrait of Mohamed Dawood" data-i18n-alt="hero.portraitAlt" fetchpriority="high" decoding="async">
+      </figure>
+    </section>
+
+    <!-- ============ Showcase ============ -->
+    <!-- Rendered from SHOWCASE in content.js: best work sliding on its own; each shot opens its case study -->
+    <section class="showcase" aria-labelledby="showcase-title">
+      <h2 class="visually-hidden" id="showcase-title" data-i18n="showcase.title">Best work</h2>
+      <div class="showcase__viewport" id="showcase"></div>
+    </section>
+
+    <!-- ============ Selected Work ============ -->
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section__head section__head--split reveal">
+          <div>
+            <h2 class="section__title" id="work-title" data-i18n="work.title">Selected Work</h2>
+          </div>
+          <p class="section__intro" data-i18n="work.intro">Placeholder projects — each folder will be replaced with real work as it is provided.</p>
+        </header>
+
+        <!-- Rendered from PROJECTS in content.js -->
+        <ul class="projects" id="projects" role="list"></ul>
+        <noscript><p class="pending">Projects require JavaScript to display.</p></noscript>
+      </div>
+    </section>
+
+    <!-- ============ Services ============ -->
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section__head section__head--split reveal">
+          <div>
+            <h2 class="section__title" id="services-title" data-i18n="services.title">Services</h2>
+          </div>
+          <p class="section__intro" data-i18n="services.intro">What I design and produce.</p>
+        </header>
+
+        <!-- Rendered from SERVICES in content.js: small glass cards, with shots and links to real projects -->
+        <div class="svc-grid" id="svc-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ Skills ============ -->
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="skills__head reveal">
+          <h2 class="skills__title" id="skills-title" data-i18n="skills.title">Tools &amp; Capabilities</h2>
+          <p class="skills__intro" data-i18n="skills.intro">The tools I use, and how I work with teams.</p>
+        </header>
+
+        <!-- Moving glass strips of tool logos, one per category; rendered from TOOLS in content.js -->
+        <div class="glass-stage tool-strips" id="tool-strips"></div>
+
+        <!-- Rendered from SKILLS in content.js -->
+        <div class="skills__groups" id="skills-groups"></div>
+      </div>
+    </section>
+
+    <!-- ============ About ============ -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="section__label" id="about-title" data-i18n="about.label">About</h2>
+        </header>
+
+        <div class="about__grid">
+          <div class="about__lead">
+            <p class="about__statement reveal" data-i18n-html="about.statement">A senior visual artist, building visual work <em>since 2020.</em></p>
+          </div>
+
+        </div>
+
+        <!-- Stats bar: edit values in data-count; years is computed from 2020 in script.js -->
+        <div class="glass-stage" id="experience">
+          <ul class="stats-bar glass reveal" role="list">
+            <li class="stat">
+              <p class="stat__num" dir="ltr"><span data-count="years">11</span><sup>+</sup></p>
+              <p class="stat__label" data-i18n="stats.years">Years of experience</p>
+            </li>
+            <li class="stat">
+              <p class="stat__num" dir="ltr"><span data-count="40">40</span><sup>+</sup></p>
+              <p class="stat__label" data-i18n="stats.companies">Companies</p>
+            </li>
+            <li class="stat">
+              <p class="stat__num" dir="ltr"><span data-count="60">60</span><sup>+</sup></p>
+              <p class="stat__label" data-i18n="stats.clients">Clients</p>
+            </li>
+            <li class="stat">
+              <p class="stat__num" dir="ltr"><span data-count="800">800</span><sup>+</sup></p>
+              <p class="stat__label" data-i18n="stats.projects">Projects delivered</p>
+            </li>
+            <li class="stat">
+              <p class="stat__num" dir="ltr"><span data-count="4000">4,000</span><sup>+</sup></p>
+              <p class="stat__label" data-i18n="stats.assets">Assets delivered</p>
+            </li>
+            <li class="stat stat--countries">
+              <div class="stat__row">
+                <p class="stat__num" dir="ltr"><span data-count="6">6</span></p>
+                <!-- Rendered from COUNTRIES in content.js -->
+                <ul class="flag-stack" id="countries" role="list"></ul>
+              </div>
+              <p class="stat__label" data-i18n="stats.countries">Countries served</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Client rating: 4.5 stars with stars that pop in, plus one large review at a time.
+             Reviews come from REVIEWS in content.js. -->
+        <div class="rating glass reveal">
+          <div class="rating__summary">
+            <div class="stars stars--lg" aria-hidden="true"></div>
+            <p class="rating__label" data-i18n="rating.label">Average client rating</p>
+            <p class="visually-hidden" data-i18n="rating.sr">Rated 4.5 out of 5 by clients</p>
+          </div>
+          <div class="testi" id="reviews" role="region" aria-label="Client reviews" data-i18n-aria="rating.aria"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <h2 class="section__label" data-i18n="contact.label">Contact</h2>
+        </header>
+
+        <p class="contact__title reveal" id="contact-title" data-i18n-html="contact.title">Let’s build <em>something.</em></p>
+
+        <!-- PLACEHOLDER: set real href values in content.js (CONTACT) -->
+        <ul class="contact__links reveal" id="contact-links" role="list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="footer__logo" href="#top" aria-label="Mohamed Dawood — back to top"><svg class="md-mark" viewBox="0 0 79 147" aria-hidden="true"><path fill="currentColor" d="M0 0h23l16.5 47.5L56 0h23v73H64V23L46 73H33L15 23v50H0zM0 86h55v12H15v18c0 7 11 11.5 24.5 11.5S64 123 64 116V73h15v41c0 19-18 33-39.5 33S0 133 0 114z"/></svg></a>
+      <p>© <span id="year">2026</span> <span data-i18n="nav.brand">Mohamed Dawood</span></p>
+      <p class="footer__tag" data-i18n="hero.taglinePlain">Always Learning, Always Building.</p>
+      <a href="#top" class="footer__top"><span data-i18n="footer.top">Back to top</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    </div>
+  </footer>
+
+  <!-- Service details popup (filled from SERVICES + SERVICE_DETAILS in content.js) -->
+  <dialog class="svc-modal" id="svc-modal" aria-labelledby="svc-modal-title">
+    <div class="svc-modal__card">
+      <button class="svc-modal__close" type="button" data-act="close" data-i18n-aria="services.close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="svc-modal__scroll"><div class="svc-modal__body" id="svc-modal-body"></div></div>
+    </div>
+  </dialog>
+
+  <!-- Project case study popup (filled from PROJECTS in content.js) -->
+  <dialog class="svc-modal cs-modal" id="cs-modal" aria-labelledby="cs-modal-title">
+    <div class="svc-modal__card">
+      <button class="svc-modal__close" type="button" data-act="close" data-i18n-aria="services.close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="svc-modal__scroll"><div class="svc-modal__body" id="cs-modal-body"></div></div>
+    </div>
+  </dialog>
+
+  <script src="content.js?v=161"></script>
+  <script src="script.js?v=161"></script>
+</body>
+</html>
