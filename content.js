@@ -1954,7 +1954,7 @@ window.SHOWCASE = [
   [
     { project: 6, src: 'assets/thumbs/fox-atvs/rzr-lightning.webp', w: 1254, h: 1254 },
     { project: 6, src: 'assets/thumbs/fox-atvs/rzr-flames.webp', w: 1254, h: 1254 },
-    { project: 7, src: 'assets/thumbs/coffee-crack/front-caramel.webp', w: 441, h: 720 },
+    { project: 8, src: 'assets/thumbs/social-media/post-yummi-3.webp', w: 1080, h: 1080 },
     { project: 16, src: 'assets/thumbs/ponca/cover.webp', w: 1920, h: 1080 },
     { project: 11, src: 'assets/thumbs/el-behairy/tall-asad.webp', w: 700, h: 1498 },
     { project: 11, src: 'assets/thumbs/el-behairy/tall-mariouma.webp', w: 700, h: 1498 },

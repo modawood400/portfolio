@@ -556,6 +556,8 @@ html[dir="rtl"] .ribbon { inset-inline-start: auto; right: -25%; }
   letter-spacing: -0.05em;
 }
 [lang="ar"] .hero__name { font-family: var(--font-ar); line-height: 1.2; letter-spacing: 0; }
+/* Arabic: two lines, set tighter, on a card as wide as the English one so it stays clear of the nav */
+@media (min-width: 900px) { [lang="ar"] .hero__name { line-height: 1; } [lang="ar"] .hero__text { min-width: 650px; } }
 .hero__line { align-self: flex-start; }
 
 .hero__role {

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Security: only this site's own scripts run (the inline one is pinned by its hash; update the hash
        if that script changes), fonts come from Google Fonts, and links never leak the page address. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-PzSacTQgz8P5jK7bteqwwDbhZ7lNL5UtR6c/D5TtEAE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-SLie4erMH/HLeRfXcgaCucTdCAjK/cOlafXQ+vi+wcc='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Mohamed Dawood</title>
   <meta name="description" content="Mohamed Dawood | محمد داود — Senior Visual Artist. Always Learning, Always Building.">
@@ -20,8 +20,8 @@
     (function () {
       try {
         var q = new URLSearchParams(location.search).get('lang');
-        var l = q || localStorage.getItem('md-lang');
-        if (l === 'ar') { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; }
+        // Opens in English; Arabic only when the link asks for it (?lang=ar) or the visitor switches
+        if (q === 'ar') { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; }
         // Ask for a language once per visit (skipped when the link already sets ?lang=)
         if (!q && !sessionStorage.getItem('md-lang-picked')) document.documentElement.classList.add('gate');
       } catch (e) {}
@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Bricolage Grotesque for Latin; Thmanyah Sans (Arabic) is self-hosted in /fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
-  <link rel="stylesheet" href="styles.css?v=171">
+  <link rel="stylesheet" href="styles.css?v=174">
 </head>
 <body>
   <!-- Language picker shown before the site opens (once per visit) -->
@@ -307,7 +307,7 @@
     </div>
   </dialog>
 
-  <script src="content.js?v=171"></script>
-  <script src="script.js?v=171"></script>
+  <script src="content.js?v=174"></script>
+  <script src="script.js?v=174"></script>
 </body>
 </html>
