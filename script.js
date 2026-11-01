@@ -985,7 +985,7 @@
       var at = 0;
       draw();
       setInterval(function () {
-        if (document.hidden || !el.isConnected || busy) return;
+        if (document.hidden || !el.isConnected || busy || el.closest('.is-offscreen')) return;
         at = (at + 1) % seq.length;
         go(seq[at]);
       }, 2400);
@@ -1227,14 +1227,6 @@
   }
 
   /* ---------- Init ---------- */
-  // Pause the looping animations (ribbons, timeline, tool strips, previews, reviews) while their section is off screen
-  if ('IntersectionObserver' in window) {
-    var offscreen = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { en.target.classList.toggle('is-offscreen', !en.isIntersecting); });
-    }, { rootMargin: '200px 0px' });
-    document.querySelectorAll('main > section, .hero').forEach(function (el) { offscreen.observe(el); });
-  }
-
   // "#top" is the fixed nav, so jumping to it does nothing: scroll the page to the top instead
   document.querySelectorAll('a[href="#top"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
@@ -1256,7 +1248,13 @@
   // Pause looping motion in sections that are off screen, so scrolling only pays for what is visible
   if ('IntersectionObserver' in window) {
     var offIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { e.target.classList.toggle('is-offscreen', !e.isIntersecting); });
+      entries.forEach(function (e) {
+        e.target.classList.toggle('is-offscreen', !e.isIntersecting);
+        // carousel clips stop decoding while the carousel is out of view
+        e.target.querySelectorAll('.showcase video').forEach(function (v) {
+          if (e.isIntersecting) { var p = v.play(); if (p) p.catch(function () {}); } else v.pause();
+        });
+      });
     }, { rootMargin: '100px 0px' });
     document.querySelectorAll('main > section, header.hero, .hero').forEach(function (s) { offIO.observe(s); });
   }

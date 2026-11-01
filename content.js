@@ -1954,7 +1954,7 @@ window.SHOWCASE = [
   [
     { project: 6, src: 'assets/thumbs/fox-atvs/rzr-lightning.webp', w: 1254, h: 1254 },
     { project: 6, src: 'assets/thumbs/fox-atvs/rzr-flames.webp', w: 1254, h: 1254 },
-    { project: 6, src: 'assets/thumbs/fox-atvs/tshirt-b.webp', w: 1200, h: 1200 },
+    { project: 7, src: 'assets/thumbs/coffee-crack/front-caramel.webp', w: 441, h: 720 },
     { project: 16, src: 'assets/thumbs/ponca/cover.webp', w: 1920, h: 1080 },
     { project: 11, src: 'assets/thumbs/el-behairy/tall-asad.webp', w: 700, h: 1498 },
     { project: 11, src: 'assets/thumbs/el-behairy/tall-mariouma.webp', w: 700, h: 1498 },
@@ -1972,7 +1972,7 @@ window.SHOWCASE = [
   [
     { project: 13, book: { dir: 'assets/thumbs/mining-magazine/q3/', pages: 72, spreads: [0, 2, 4, 15, 21, 18, 25, 28, 10, 3] }, w: 1600, h: 1132 },
     { project: 13, book: { dir: 'assets/thumbs/mining-magazine/q2/', pages: 104, spreads: [0, 2, 4, 6, 18, 21, 11, 35, 45, 9, 25, 30] }, w: 1600, h: 1132 },
-    { project: 6, src: 'assets/thumbs/fox-atvs/tshirt-a.webp', w: 1200, h: 1200 },
+    { project: 1, src: 'assets/thumbs/cognilabel/icon-glow.webp', w: 720, h: 480 },
     { project: 6, src: 'assets/thumbs/fox-atvs/board-print.webp', w: 1920, h: 1200 },
     { project: 2, src: 'assets/thumbs/sursec/pattern.webp', w: 2000, h: 1125 },
     { project: 10, src: 'assets/thumbs/mining-saudi/mark.webp', w: 1672, h: 941 },
