@@ -749,7 +749,7 @@ html[dir="rtl"] .ribbon { inset-inline-start: auto; right: -25%; }
 }
 .showcase__track { position: relative; display: flex; width: max-content; justify-self: left; } /* left even in Arabic, or the rows start off-screen */
 .showcase__track:hover { z-index: 2; }
-.showcase__group { display: flex; gap: clamp(12px, 1.4vw, 20px); padding-inline-end: clamp(12px, 1.4vw, 20px); }
+.showcase__group { will-change: transform; display: flex; gap: clamp(12px, 1.4vw, 20px); padding-inline-end: clamp(12px, 1.4vw, 20px); }
 .showcase__item {
   position: relative;
   flex: none;
@@ -2659,9 +2659,13 @@ html[dir="rtl"] .ribbon { inset-inline-start: auto; right: -25%; }
 .folder:hover::after,
 .folder:focus-visible::after { opacity: 1; transform: scaleX(0.94); }
 
-/* Phones and tablets: the frosted panels below the hero use a solid milky fill instead of a live blur,
-   which is what made scrolling the lower half stutter */
+/* Phones and tablets: the frosted panels use a solid milky fill instead of a live blur,
+   which is what made scrolling stutter (the hero card re-blurred the moving ribbons every frame) */
 @media (max-width: 899.98px), (hover: none) {
+  .showcase__viewport { -webkit-mask-image: none; mask-image: none; }
+  .hero__text, .ribbon, .hero__band { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  .hero__text { background-color: rgba(247, 246, 244, 0.9); }
+  .ribbon { background: rgba(255, 255, 255, 0.82); }
   .folder__front, .svc-tile, .tool-strip, .glass, .stats-bar, .rating, .tl__heads {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;

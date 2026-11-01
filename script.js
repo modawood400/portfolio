@@ -96,6 +96,16 @@
         '<div class="showcase__group" aria-hidden="true">' + set.replace(/<button /g, '<button tabindex="-1" ') + '</div></div>';
     }).join('');
     box.querySelectorAll('.flip').forEach(initBook);
+    // Only the clips actually on screen play; the rest (off to the side or scrolled away) stay paused
+    var vids = box.querySelectorAll('video');
+    if ('IntersectionObserver' in window && vids.length) {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { var pr = en.target.play(); if (pr) pr.catch(function () {}); } else en.target.pause();
+        });
+      });
+      vids.forEach(function (v) { v.removeAttribute('autoplay'); vio.observe(v); });
+    }
 
     if (!box.dataset.bound) {
       box.dataset.bound = '1';
@@ -1250,10 +1260,6 @@
     var offIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         e.target.classList.toggle('is-offscreen', !e.isIntersecting);
-        // carousel clips stop decoding while the carousel is out of view
-        e.target.querySelectorAll('.showcase video').forEach(function (v) {
-          if (e.isIntersecting) { var p = v.play(); if (p) p.catch(function () {}); } else v.pause();
-        });
       });
     }, { rootMargin: '100px 0px' });
     document.querySelectorAll('main > section, header.hero, .hero').forEach(function (s) { offIO.observe(s); });
