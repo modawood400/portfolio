@@ -1999,6 +1999,27 @@ window.SHOWCASE = [
     { project: 14, src: 'assets/work/mining-video/clips/p3.mp4', w: 640, h: 360 }
   ]
 ];
+// Middle row: the social posts from row 1 again, in reverse order (it also slides the other way),
+// without the Family Health Hijri new year post
+// plus more posts that only appear here, one slipped in after every second post
+(function () {
+  var extra = [
+    { project: 8, src: 'assets/thumbs/social-media/post-santos-2.webp', w: 1080, h: 1080 },
+    { project: 10, src: 'assets/thumbs/mining-social/partner-fmf.webp', w: 1400, h: 1400 },
+    { project: 5, src: 'assets/thumbs/hazelnut-smash/post-bomb.webp', w: 720, h: 900 },
+    { project: 8, src: 'assets/thumbs/social-media/post-shutter-3.webp', w: 1080, h: 1080 },
+    { project: 10, src: 'assets/thumbs/mining-social/safety.webp', w: 1400, h: 1750 },
+    { project: 8, src: 'assets/thumbs/social-media/post-yummi-4.webp', w: 1080, h: 1080 },
+    { project: 5, src: 'assets/thumbs/hazelnut-smash/post-tiles.webp', w: 720, h: 900 },
+    { project: 10, src: 'assets/thumbs/mining-social/geologists-day.webp', w: 1400, h: 1750 },
+    { project: 8, src: 'assets/thumbs/social-media/post-shutter-4.webp', w: 1080, h: 1080 },
+    { project: 10, src: 'assets/thumbs/mining-social/women-day.webp', w: 1400, h: 1750 }
+  ];
+  var base = window.SHOWCASE[0].filter(function (it) { return !/post-health-2\./.test(it.src); }).reverse();
+  var row = [];
+  base.forEach(function (it, i) { row.push(it); if (i % 2 && extra.length) row.push(extra.shift()); });
+  window.SHOWCASE.splice(3, 0, row.concat(extra));
+})();
 
 /* --------------------------------------------------------------------------
    Services — small glass cards in the Services section.

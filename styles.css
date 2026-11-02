@@ -798,7 +798,8 @@ html[dir="rtl"] .ribbon { inset-inline-start: auto; right: -25%; }
   .showcase__track--reverse .showcase__group { animation-direction: reverse; animation-duration: 90s; }
   .showcase__track:nth-child(3) .showcase__group { animation-duration: 100s; }
   .showcase__track:nth-child(4) .showcase__group { animation-duration: 110s; }
-  .showcase__track:nth-child(5) .showcase__group { animation-duration: 70s; }
+  .showcase__track:nth-child(5) .showcase__group { animation-duration: 120s; }
+  .showcase__track:nth-child(6) .showcase__group { animation-duration: 70s; }
 }
 /* Reduced motion: no sliding, swipe through one set instead */
 @media (prefers-reduced-motion: reduce) {
