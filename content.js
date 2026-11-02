@@ -1937,8 +1937,7 @@ window.SHOWCASE = [
     { project: 10, src: 'assets/thumbs/mining-social/innovation.webp', w: 1400, h: 1400 },
     { project: 10, src: 'assets/thumbs/mining-social/partner-rt.webp', w: 1400, h: 1400 },
     { project: 10, src: 'assets/thumbs/mining-social/fmf-deals.webp', w: 1400, h: 1400 },
-    { project: 8, src: 'assets/thumbs/social-media/post-health-1.webp', w: 1080, h: 1080 },
-    { project: 8, src: 'assets/thumbs/social-media/post-health-2.webp', w: 1080, h: 1080 }
+    { project: 8, src: 'assets/thumbs/social-media/post-health-1.webp', w: 1080, h: 1080 }
   ],
   [
     { project: 3, src: 'assets/thumbs/fruitora/scene5-0.webp', w: 1920, h: 1072 },
@@ -2000,7 +1999,6 @@ window.SHOWCASE = [
   ]
 ];
 // Middle row: the social posts from row 1 again, in reverse order (it also slides the other way),
-// without the Family Health Hijri new year post
 // plus more posts that only appear here, one slipped in after every second post
 (function () {
   var extra = [
@@ -2015,7 +2013,7 @@ window.SHOWCASE = [
     { project: 8, src: 'assets/thumbs/social-media/post-shutter-4.webp', w: 1080, h: 1080 },
     { project: 10, src: 'assets/thumbs/mining-social/women-day.webp', w: 1400, h: 1750 }
   ];
-  var base = window.SHOWCASE[0].filter(function (it) { return !/post-health-2\./.test(it.src); }).reverse();
+  var base = window.SHOWCASE[0].slice().reverse();
   var row = [];
   base.forEach(function (it, i) { row.push(it); if (i % 2 && extra.length) row.push(extra.shift()); });
   window.SHOWCASE.splice(3, 0, row.concat(extra));
