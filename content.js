@@ -512,6 +512,19 @@ window.PROJECTS = [
             { src: 'assets/work/fruitora/scene4-0.webp', size: 'half', ratio: '1920 / 1070' },
             { src: 'assets/work/fruitora/scene4-1.webp', size: 'half', ratio: '1920 / 1072' }
           ]
+        },
+        {
+          title: { en: 'Ramadan offers', ar: 'عروض رمضان' },
+          text: {
+            en: 'Social posts for the Ramadan season: nuts and dried fruit under lanterns and string lights, with the price on a shop tag.',
+            ar: 'بوستات سوشيال لموسم رمضان: مكسرات وفواكه مجففة تحت الفوانيس واللمبات، والسعر على بطاقة زي بتاعة المحل.'
+          },
+          gallery: [
+            { src: 'assets/work/fruitora/post-ramadan-offers.webp', size: 'half', ratio: '1 / 1' },
+            { src: 'assets/work/fruitora/post-walnut.webp', size: 'half', ratio: '1 / 1' },
+            { src: 'assets/work/fruitora/post-pistachio.webp', size: 'half', ratio: '1 / 1' },
+            { src: 'assets/work/fruitora/post-cashew.webp', size: 'half', ratio: '1 / 1' }
+          ]
         }
       ]
     }
@@ -1162,15 +1175,16 @@ window.PROJECTS = [
           title: { en: 'Features and days', ar: 'موضوعات ومناسبات' },
           text: { en: '', ar: '' },
           gallery: [
+            { src: 'assets/work/mining-social/calling-all.webp', size: 'half', ratio: '4 / 5' },
+            { src: 'assets/work/mining-social/safety.webp', size: 'half', ratio: '4 / 5' },
+            { src: 'assets/work/mining-social/geologists-day.webp', size: 'half', ratio: '4 / 5' },
+            { src: 'assets/work/mining-social/women-day.webp', size: 'half', ratio: '4 / 5' },
             { src: 'assets/work/mining-social/lme.webp', size: 'third', ratio: '4 / 5' },
             { src: 'assets/work/mining-social/sp-global.webp', size: 'third', ratio: '4 / 5' },
             { src: 'assets/work/mining-social/mineral-wealth.webp', size: 'third', ratio: '4 / 5' },
             { src: 'assets/work/mining-social/issue-q3.webp', size: 'third', ratio: '4 / 5' },
             { src: 'assets/work/mining-social/ai-archives.webp', size: 'third', ratio: '4 / 5' },
-            { src: 'assets/work/mining-social/key-success.webp', size: 'third', ratio: '4 / 5' },
-            { src: 'assets/work/mining-social/geologists-day.webp', size: 'third', ratio: '4 / 5' },
-            { src: 'assets/work/mining-social/women-day.webp', size: 'third', ratio: '4 / 5' },
-            { src: 'assets/work/mining-social/safety.webp', size: 'third', ratio: '4 / 5' }
+            { src: 'assets/work/mining-social/key-success.webp', size: 'third', ratio: '4 / 5' }
           ]
         },
         {
@@ -1937,7 +1951,10 @@ window.SHOWCASE = [
     { project: 10, src: 'assets/thumbs/mining-social/innovation.webp', w: 1400, h: 1400 },
     { project: 10, src: 'assets/thumbs/mining-social/partner-rt.webp', w: 1400, h: 1400 },
     { project: 10, src: 'assets/thumbs/mining-social/fmf-deals.webp', w: 1400, h: 1400 },
-    { project: 8, src: 'assets/thumbs/social-media/post-health-1.webp', w: 1080, h: 1080 }
+    { project: 8, src: 'assets/thumbs/social-media/post-health-1.webp', w: 1080, h: 1080 },
+    { project: 3, src: 'assets/thumbs/fruitora/post-pistachio.webp', w: 1080, h: 1080 },
+    { project: 10, src: 'assets/thumbs/mining-social/calling-all.webp', w: 1080, h: 1350 },
+    { project: 3, src: 'assets/thumbs/fruitora/post-walnut.webp', w: 1080, h: 1080 }
   ],
   [
     { project: 3, src: 'assets/thumbs/fruitora/scene5-0.webp', w: 1920, h: 1072 },
@@ -2011,7 +2028,9 @@ window.SHOWCASE = [
     { project: 5, src: 'assets/thumbs/hazelnut-smash/post-tiles.webp', w: 720, h: 900 },
     { project: 10, src: 'assets/thumbs/mining-social/geologists-day.webp', w: 1400, h: 1750 },
     { project: 8, src: 'assets/thumbs/social-media/post-shutter-4.webp', w: 1080, h: 1080 },
-    { project: 10, src: 'assets/thumbs/mining-social/women-day.webp', w: 1400, h: 1750 }
+    { project: 10, src: 'assets/thumbs/mining-social/women-day.webp', w: 1400, h: 1750 },
+    { project: 3, src: 'assets/thumbs/fruitora/post-cashew.webp', w: 1080, h: 1080 },
+    { project: 3, src: 'assets/thumbs/fruitora/post-ramadan-offers.webp', w: 1080, h: 1080 }
   ];
   var base = window.SHOWCASE[0].slice().reverse();
   var row = [];
